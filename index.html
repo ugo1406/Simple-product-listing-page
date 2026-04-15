@@ -7,7 +7,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 
     <style>
-        /* Simple styling */
         body {
             font-family: Arial;
             padding: 20px;
@@ -31,34 +30,29 @@
 
     <h1>🛍️ Product Listing Page</h1>
 
-    <!-- SEARCH BOX -->
-    <!-- ng-model links input to AngularJS -->
     <input type="text" ng-model="searchText" placeholder="Search products...">
 
-    <!-- PRODUCT LIST -->
-    <!-- ng-repeat loops through products array -->
-    <!-- filter:searchText allows searching -->
     <div class="product" ng-repeat="item in products | filter:searchText">
 
-        <!-- Product Name -->
+       
         <h3>{{ item.name }}</h3>
 
-        <!-- Product Price -->
+       
         <p>Price: ₦{{ item.price }}</p>
 
-        <!-- Product Category -->
+       
         <p>Category: {{ item.category }}</p>
 
     </div>
 
     <script>
-        // Create AngularJS app module
+        
         var app = angular.module("productApp", []);
 
-        // Create controller
+        
         app.controller("ProductController", function($scope) {
 
-            // Product data (array of objects)
+            
             $scope.products = [
                 { name: "Laptop", price: 250000, category: "Electronics" },
                 { name: "Phone", price: 150000, category: "Electronics" },
@@ -67,7 +61,7 @@
                 { name: "Headphones", price: 30000, category: "Accessories" }
             ];
 
-            // Search text (empty by default)
+            
             $scope.searchText = "";
 
         });
