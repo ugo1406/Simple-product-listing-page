@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="newProduct">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>Dummy Project</title>
+
+    <style>
+        .product{
+            border: 1px solid #111;
+            padding: 1rem;
+            box-shadow: 10px;
+        }
+    </style>
+</head>
+<body ng-controller="ProductController" >
+   <div class="product" ng-repeat="product in products">
+<h3>{{product.name}}</h3>
+<p>{{product.price}}</p>
+<p>{{product.category}}</p>
+
+   </div>
+
+    <script>
+var app = angular.module("newProduct", []);
+
+ app.controller("ProductController", function($scope){
+      $scope.products = [
+                { name: "Laptop", price: 250000, category: "Electronics" },
+                { name: "Phone", price: 150000, category: "Electronics" },
+                { name: "Shoes", price: 20000, category: "Fashion" },
+                { name: "Bag", price: 12000, category: "Fashion" },
+                { name: "Headphones", price: 30000, category: "Accessories" }]
+ })
+    </script>
+</body>
+</html>
