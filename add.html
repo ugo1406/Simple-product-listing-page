@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="productApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Product</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
+  <script src="page.js"></script>
+  <link href="page.css" rel="stylesheet">
+</head>
+<body ng-controller="ProductController">
+  <!-- <a href="#!/home">← Back to Home</a> -->
+
+  <form class="form">
+    <h1>🛍️ Add Product</h1>
+    <input type="text" ng-model="product.name" placeholder="Name">
+    <input type="number" ng-model="product.price" placeholder="Price">
+    <input type="text" ng-model="product.category" placeholder="Category">
+    <input type="number" ng-model="product.quantity" placeholder="Quantity">
+    <button type="button" ng-click="addProduct()">Add Product</button>
+  </form>
+</body>
+</html>

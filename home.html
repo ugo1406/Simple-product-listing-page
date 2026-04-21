@@ -1,0 +1,90 @@
+<div ng-controller="ProductController">
+
+  <!-- <header id="dark-button">
+    <button ng-click="toggleDarkMode()">
+      <img src="night-mode.png">
+    </button>
+  </header> -->
+
+  <div class="page-head">
+    <h1>Shoppy</h1>
+    <p>Your one stop shop.</p>
+  </div>
+
+  
+  <!-- <a href="#!/home">Home</a>
+  <a href="#!/add">Add Product</a> -->
+
+  <div id="order-button">
+    <div id="dropdown">
+      <select ng-model="selectedProduct"
+        ng-options="product as (product.name + ': ' + product.quantity) for product in products">
+      </select>
+    </div>
+
+    <div id="order-quantity">
+      <input type="number" ng-model="orderQty" placeholder="Enter quantity" min="1">
+    </div>
+
+    <button ng-click="placeOrder()">Place an Order</button>
+  </div>
+
+  <section id="main-section">
+    <h1>🛍️ Products</h1>
+
+    <div id="search-bar">
+      <input type="text" ng-model="searchText" placeholder="Search products...">
+    </div>
+
+    <div class="product"
+      ng-repeat="item in products | filter:searchText"
+      ng-click="toggleProduct(item)">
+
+      <h3>{{ item.name }}</h3>
+      <p>Price: ₦{{ item.price }}</p>
+
+      <div class="product-details" ng-show="selectedProduct === item">
+        <p><strong>Category:</strong> {{ item.category }}</p>
+        <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+        <p><strong>Description:</strong> This is a high quality {{ item.name }} product.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+
+
+
+
+
+<!-- <div id="order-button">
+  <select ng-model="selectProduct"
+    ng-options="p as (p.name + ' — qty: ' + p.quantity) for p in products">
+  </select>
+  <input type="number" ng-model="orderQty" placeholder="Quantity" min="1">
+  <button ng-click="placeOrder()">Place Order</button>
+</div>
+
+<section id="main-section">
+  <h1>🛍️ Products</h1>
+  <div id="search-bar">
+    <input type="text" ng-model="searchText" placeholder="Search products...">
+  </div>
+
+  <div class="product"
+       ng-repeat="item in products | filter:searchText"
+       ng-click="toggleProduct(item)">
+    <h3>{{ item.name }}</h3>
+    <p>Price: ₦{{ item.price | number }}</p>
+
+    <div class="product-details" ng-show="selectedProduct === item">
+      <p><strong>Category:</strong> {{ item.category }}</p>
+      <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+      <p><strong>Description:</strong> High quality {{ item.name }}.</p>
+    </div>
+  </div>
+</section> -->
