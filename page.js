@@ -57,6 +57,8 @@ app.controller("ProductController", function ($scope, ProductService) {
     $scope.product = { name: "", price: "", category: "", quantity: "" };
     $scope.isDarkMode = false; // default is light mode
     $scope.orderQty = 1;
+    $scope.cart = [];
+    $scope.cartOpen = false;
 
     // $scope.products = [
     //     { name: "Laptop", price: 250000, category: "Electronics", quantity: "10" },
@@ -99,27 +101,47 @@ app.controller("ProductController", function ($scope, ProductService) {
     $scope.placeOrder = function () {
         if (!$scope.selectedProduct) {
             alert("Please select a product");
-            return;
-        }
+            return;}
 
         if (!$scope.orderQty || $scope.orderQty <= 0) {
             alert("Enter a valid quantity");
-            return;
-        }
+            return; }
 
         if ($scope.orderQty > $scope.selectedProduct.quantity) {
             alert("Not enough stock available!");
-            return;
-        }
+            return; }
 
         $scope.selectedProduct.quantity -= $scope.orderQty;
 
+      var existing = $scope.$parent.cart.find(function(c) { 
+    return c.name === $scope.selectedProduct.name; 
+});
+if (existing) {
+    existing.qty += $scope.orderQty;
+} else {
+    $scope.$parent.cart.push({ 
+        name: $scope.selectedProduct.name, 
+        qty: $scope.orderQty, 
+        price: $scope.selectedProduct.price 
+    });
+}
         // alert("Order placed successfully!");
         $scope.orderPopup = true;
 
         $scope.orderQty = 1;
     };
-  
+
+
+  //cart total
+    $scope.cartTotal = function() {
+    var total = 0;
+    $scope.cart.forEach(function(item) {
+        total += item.price * item.qty;
+    });
+    return total;
+};
+
+
     $scope.showPopup = true;
 
     $scope.closePopup = function () {
