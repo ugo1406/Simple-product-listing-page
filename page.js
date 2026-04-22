@@ -115,9 +115,16 @@ app.controller("ProductController", function ($scope, ProductService) {
         $scope.selectedProduct.quantity -= $scope.orderQty;
 
         // alert("Order placed successfully!");
-
+        $scope.orderPopup = true;
 
         $scope.orderQty = 1;
+    };
+  
+    $scope.showPopup = true;
+
+    $scope.closePopup = function () {
+    $scope.showPopup = false;
+    $scope.orderPopup = false;
     };
 
     $scope.searchText = "";

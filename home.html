@@ -11,9 +11,15 @@
     <p>Your one stop shop.</p>
   </div>
 
+  <div class="popup" ng-show="showPopup">
+  <div class="popup-box">
+    <h2>Welcome to Shoppy!</h2>
+    <p>Click on a product to learn more.</p>
+
+    <button ng-click="closePopup()">Close</button>
+  </div>
+</div>
   
-  <!-- <a href="#!/home">Home</a>
-  <a href="#!/add">Add Product</a> -->
 
   <div id="order-button">
     <div id="dropdown">
@@ -27,6 +33,13 @@
     </div>
 
     <button ng-click="placeOrder()">Place an Order</button>
+  </div>
+  <div class="popup"  ng-show="orderPopup">
+    <div class="popup-box">
+        <p>Your Order has been placed!</p>
+
+    <button ng-click="orderPopup = false">Close</button>
+    </div>
   </div>
 
   <section id="main-section">
